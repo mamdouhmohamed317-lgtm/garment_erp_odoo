@@ -1,0 +1,17 @@
+name: garment-erp-odoo
+services:
+  - name: odoo-web
+    git:
+      repository: github.com/your-username/garment_erp_odoo
+      branch: main
+    build:
+      dockerfile: Dockerfile
+    instance_type: free
+    regions:
+      - fra
+    ports:
+      - port: 8069
+        path: /
+    env:
+      - key: PORT
+        value: "8069"
