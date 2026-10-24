@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_bom_form_view_inherit_garment" model="ir.ui.view">
+        <field name="name">mrp.bom.form.inherit.garment</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='components']" position="after">
+                <page string="Garment Costing &amp; Operations" name="garment_costing">
+                    <group>
+                        <group string="Operation Costs (Per Unit)">
+                            <field name="cutting_cost"/>
+                            <field name="sewing_cost"/>
+                            <field name="finishing_cost"/>
+                            <field name="other_operation_cost"/>
+                        </group>
+                        <group string="Cost Summary">
+                            <field name="raw_material_cost" readonly="1"/>
+                            <field name="total_operations_cost" readonly="1"/>
+                            <field name="total_garment_cost" class="oe_subtotal_footer_separator" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
