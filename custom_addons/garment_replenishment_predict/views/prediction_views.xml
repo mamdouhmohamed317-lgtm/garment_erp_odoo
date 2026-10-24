@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_garment_material_prediction_tree" model="ir.ui.view">
+        <field name="name">garment.material.prediction.tree</field>
+        <field name="model">garment.material.prediction</field>
+        <field name="arch" type="xml">
+            <tree string="Raw Material Predictions" decoration-danger="state == 'critical'" decoration-warning="state == 'warning'">
+                <field name="product_id"/>
+                <field name="current_qty"/>
+                <field name="predicted_demand_30days"/>
+                <field name="shortage_qty"/>
+                <field name="recommended_purchase_qty"/>
+                <field name="state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_garment_material_prediction" model="ir.actions.act_window">
+        <field name="name">Raw Material Replenishment Forecast</field>
+        <field name="res_model">garment.material.prediction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_garment_prediction_root" name="Material Forecast" parent="mrp.menu_mrp_manufacturing" action="action_garment_material_prediction"/>
+</odoo>
